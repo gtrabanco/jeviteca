@@ -1,0 +1,93 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+  </head>
+  <body ng-app="jevitecaApp">
+    <!--[if lte IE 8]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <!-- Add your site or application content here -->
+
+    <div class="header" ng-controller="NavbarCtrl">
+      <header>
+        <h1>Jeviteca</h1>
+      </header>
+    </div>
+
+    <div class="container">
+      <section ng-view></section>
+    </div>
+
+    <div class="footer">
+      <footer>
+        <div class="container">
+          <summary><a href="http://gabi.com.es">Por Gabriel Trabanco</a> como trabajo de la asignatura <a
+            href="http://angularjs.com">AngularJS</a> de <a href="http://keepcoding.io">KeepCoding</a></summary>
+        </div>
+      </footer>
+    </div>
+
+
+    <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -- >
+     <script>
+       !function(A,n,g,u,l,a,r){A.GoogleAnalyticsObject=l,A[l]=A[l]||function(){
+       (A[l].q=A[l].q||[]).push(arguments)},A[l].l=+new Date,a=n.createElement(g),
+       r=n.getElementsByTagName(g)[0],a.src=u,r.parentNode.insertBefore(a,r)
+       }(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+       ga('create', 'UA-XXXXX-X');
+       ga('send', 'pageview');
+    </script>
+    <!-- -->
+
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+        <!-- build:js({.tmp,app}) scripts/scripts.js -->
+        <!-- App -->
+        <script src="scripts/app.js"></script>
+
+        <!-- Constants -->
+        <script src="scripts/constants/Options.js"></script>
+
+        <!-- Filters -->
+        <script src="scripts/filters/join.js"></script>
+        <script src="scripts/filters/imagesource.js"></script>
+
+        <!-- Services -->
+        <script src="scripts/services/bands.js"></script>
+        <script src="scripts/services/albums.js"></script>
+        <script src="scripts/services/genres.js"></script>
+
+        <!-- Factories -->
+
+        <!-- Directives -->
+        <script src="scripts/directives/album.js"></script>
+
+        <!-- Controllers -->
+        <script src="scripts/controllers/albums.js"></script>
+        <script src="scripts/controllers/albumsid.js"></script>
+        <script src="scripts/controllers/navbar.js"></script>
+        <!-- endbuild -->
+</body>
+</html>
