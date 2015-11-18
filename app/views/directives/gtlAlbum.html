@@ -1,0 +1,31 @@
+<article ng-if="album" ng-class="{detailed: detailed, box: !detailed}">
+  <header>
+    <h4><span class="album-title">{{ ::album.title }}</span> <span class="album-title">({{ ::album.year }})</span></h4>
+    <p><span class="band-name">{{ ::album.band.name}}.</span> <span class="album-genre">{{ ::album.genre.name }}</span></p>
+  </header>
+  <div class="image">
+    <img src="{{ ::album.image | imageSource }}" alt="{{ ::album.title }}" class="album-artwork" />
+    <div class="rating">
+      <!--
+      <div hmrating hmupto="5" hmid="r" hmcolor="black" rate="r" range="5"></div>
+      Fix this
+      -->
+    </div>
+    <p class="favorite">Mark as favorite</p>
+  </div>
+  <div class="details" ng-if="detailed">
+    <p>Band</p>
+    <ul class="bandlist" ng-repeat="member in album.band.members">
+      <li>{{member.name}} {{ member.instruments | join:', ': '.' }}</li>
+    </ul>
+    <p>Genre: {{ album.genre.name }}</p>
+    <p>Tracklist</p>
+    <ol class="tracklist" ng-repeat="track in album.tracklist">
+      <li>{{ track }}</li>
+    </ol>
+  </div>
+</article>
+
+<article ng-if="!album">
+  <p>Album unavaible.</p>
+</article>

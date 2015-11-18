@@ -10,7 +10,7 @@
 
 var genresService = ['Options', function (Options) {
     //Get all the Genres
-    this.getAlbums = function () {
+    this.getAllAlbums = function () {
       return $http.get(Options.urlAlbums, { cache: true});
     }
 }];

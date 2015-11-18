@@ -14,17 +14,11 @@ angular
   ])
   .config(function ($routeProvider) {
     $routeProvider
-      .when('/albums', {
+      .when('/albums/:id?', {
         templateUrl: 'views/albums.html',
         controller: 'AlbumsCtrl',
         controllerAs: 'Albums'
-      })
-      .when('/albums/:id', {
-        templateUrl: 'views/albumsid.html',
-        controller: 'AlbumsidCtrl',
-        controllerAs: 'albumsId'
-      })
-      .otherwise({
+      }).otherwise({
         redirectTo: '/albums'
       });
   });

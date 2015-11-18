@@ -13,13 +13,10 @@ var albumsService = ['$http', 'Options', function ($http, Options) {
 
 
     //Get all the albums
-    this.getAlbums = function () {
+    this.getAllAlbums = function () {
       return $http.get(Options.urlAlbums, { cache: true});
     }
 }];
 
 angular.module('jevitecaApp')
-  .service('AlbumsService', function () {
-
-
-  });
+  .service('AlbumsService', albumsService);

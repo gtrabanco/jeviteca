@@ -8,9 +8,39 @@
  * Controller of the jevitecaApp
  */
 
-var albumsCtrl = ['$scope', '$http', function ($scope, $http) {
+var albumsCtrl = ['$scope', '$route', '$routeParams', 'AlbumsService', function ($scope, $route, $routeParams, AlbumsService) {
 
+    function isNumeric(n) {
+        return !isNaN(parseInt(n)) && isFinite(n);
+    }
+
+    //Define if a view is a detailed of album or not
+    $scope.detailed = false;
+
+    AlbumsService.getAllAlbums().then(
+        function (albums) {
+
+            //Check if the user wants to see a detailed view of specific album
+            if (typeof($routeParams.id) !== 'undefined' && isNumeric($routeParams.id)) {
+
+                //window.console.log('Param detected ', $routeParams.id);
+                var index = parseInt($routeParams.id) - 1;
+                $scope.detailed = true;
+                $scope.albums = albums.data[index];
+
+            } else { //If the user wants to see all
+                $scope.albums = albums.data;
+                //window.console.log($scope.albums);
+            }
+
+            //window.console.log($scope.albums);
+        },
+        function (error) {
+            window.console.log('Error');
+            $scope.albums = [];
+        }
+    );
 }];
 
 angular.module('jevitecaApp')
-  .controller('AlbumsCtrl', albumsCtrl);
+    .controller('AlbumsCtrl', albumsCtrl);

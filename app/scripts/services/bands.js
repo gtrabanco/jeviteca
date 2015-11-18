@@ -10,7 +10,7 @@
 
 var bandsService = ['Options', function (Options) {
     //Get all the albums
-    this.getBands = function () {
+    this.getAllBands = function () {
       return $http.get(Options.urlBands, { cache: true});
     }
 }];
