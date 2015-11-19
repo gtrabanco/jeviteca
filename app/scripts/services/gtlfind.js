@@ -11,7 +11,8 @@ angular.module('jevitecaApp')
     .factory('gtlFind', ['$q', function ($q) {
 
 
-        var findInArray = function (obj, arraySearchIn) {
+        //var findInArray = function (obj, arraySearchIn) {
+        return function (obj, arraySearchIn) {
             //Filter the albums
             return arraySearchIn.filter(function (item) {
                 var compare = true;
@@ -36,12 +37,14 @@ angular.module('jevitecaApp')
             });
         };
 
+        //Old code
         /**
          * Look for obj in arraySearchIn
          * @param obj
          * @param arraySearchIn
          * @return Promise
          */
+        /*
         return {
                 findInPromise: function (obj, promiseObj) {
 
@@ -59,5 +62,6 @@ angular.module('jevitecaApp')
                     return deferred.promise;
                 },
                 findInArray: findInArray
-            }
+            };
+        */
         }]);

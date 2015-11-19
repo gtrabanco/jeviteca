@@ -8,7 +8,7 @@
  * Service in the jevitecaApp.
  */
 
-var bandsService = ['Options', function (Options) {
+var bandsService = ['Options', '$q', 'gtlFind', function (Options, $q, gtlFind) {
     //Get all the albums
     this.getAllBands = function () {
       return $http.get(Options.urlBands, { cache: true});

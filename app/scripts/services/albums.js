@@ -17,7 +17,21 @@ var albumsService = ['$http', 'Options', '$q', 'gtlFind', function ($http, Optio
       return $http.get(Options.urlAlbums, { cache: true});
     };
 
-    /*
+    //Find album by object with key/value
+    this.find = function (obj) {
+
+        var deferred = $q.defer();
+
+        this.getAllAlbums().then(
+            function (albums) {
+                deferred.resolve(gtlFind(obj, albums.data));
+            }
+        );
+
+        return deferred.promise;
+    };
+
+    /* Old code
     //Find album by object with key/value
     this.find = function (obj) {
         //Creating the promise
@@ -59,11 +73,6 @@ var albumsService = ['$http', 'Options', '$q', 'gtlFind', function ($http, Optio
         return deferred.promise;
     };
     //*/
-
-    //Find album by object with key/value
-    this.find = function (obj) {
-        return gtlFind.findInPromise(obj, this.getAllAlbums());
-    };
 }];
 
 angular.module('jevitecaApp')
