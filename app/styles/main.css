@@ -85,3 +85,9 @@ body {
 
 /* Custom CSS */
 
+.favorites {
+    font-size: 14pt;
+    color: red;
+    cursor: pointer;
+}
+

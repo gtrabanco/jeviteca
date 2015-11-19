@@ -1,9 +1,9 @@
+<section ng-if="albums.length === 0">
+    <h4>No albums avaible</h4>
+</section>
 <section ng-repeat="album in albums" ng-if="albums.length > 1">
   <div gtl-album disc="album" detailed="detailed"></div>
 </section>
 <section ng-if="detailed">
   <div gtl-album disc="albums" detailed="detailed"></div>
-</section>
-<section ng-if="albums.length === 0">
-  <h4>No albums avaible</h4>
 </section>

@@ -14,9 +14,34 @@ var albumsCtrl = ['$scope', '$route', '$routeParams', 'AlbumsService', function 
         return !isNaN(parseInt(n)) && isFinite(n);
     }
 
+    //*//
     //Define if a view is a detailed of album or not
     $scope.detailed = false;
 
+    //Check if the user wants to see a detailed view of specific album
+    if (typeof($routeParams.id) !== 'undefined' && isNumeric($routeParams.id)) {
+
+        var index = parseInt($routeParams.id);
+        $scope.detailed = true;
+
+        AlbumsService.find({id: index}). then(
+            function (results) {
+                if (results.length > 0) {
+                    $scope.albums = results[0];
+                }
+            }
+        )
+
+    } else { //If the user wants to see all
+        AlbumsService.getAllAlbums().then(
+            function (albums) {
+                $scope.albums = albums.data;
+            }
+        );
+        //window.console.log($scope.albums);
+    }
+
+    /* Old code
     AlbumsService.getAllAlbums().then(
         function (albums) {
 
@@ -40,6 +65,7 @@ var albumsCtrl = ['$scope', '$route', '$routeParams', 'AlbumsService', function 
             $scope.albums = [];
         }
     );
+    //*/
 }];
 
 angular.module('jevitecaApp')
