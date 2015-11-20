@@ -85,9 +85,64 @@ body {
 
 /* Custom CSS */
 
-.favorites {
-    font-size: 14pt;
+.fav {
+    font-size: 15px;
     color: red;
     cursor: pointer;
+    display: inline;
 }
+
+.fav * {
+    display: inline;
+}
+
+.rate {
+    font-size: 15px;
+    display: inline;
+}
+
+.rate i:before {
+    content: "\f006";
+}
+
+.rate i:hover {
+    content: "\f005";
+}
+
+.fa-star:before {
+    content: "\f005";
+}
+.fa-star-o:before {
+    content: "\f006";
+}
+
+.album-artwork {
+    display: block;
+}
+.album-artwork .rating {
+    position: relative;
+    bottom: 0;
+    left: 0;
+    height: 30px;
+    width: 120px;
+}
+
+.album-artwork .fav {
+    position: relative;
+    bottom: 0;
+    right: 0;
+    height: 30px;
+    width: 30px;
+}
+
+.clickable:hover {
+    cursor: pointer;
+    color: royalblue;
+}
+
+/* No detailed (box) */
+
+/* Detailed (detailed) */
+
+
 

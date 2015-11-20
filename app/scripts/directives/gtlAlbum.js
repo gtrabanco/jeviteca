@@ -21,40 +21,24 @@ angular.module('jevitecaApp')
             },
             link: function (scope) {
 
+                console.log(scope.album);
+
                 //Setting default values for rateId and favorited
                 var strVarAlbum = 'album' + scope.album.id;
                 scope.rateId = 'rate' + scope.album.id;
-
-                gtlStorage.setNamespace('favorites');
-                scope.favorited = gtlStorage.get(strVarAlbum) || false;
-
-
-
 
                 //Functions
 
                 //Go to the album
                 scope.goToAlbum = function () {
+                    //*
                     if (!scope.detailed) {
                         $location.path('/albums/' + scope.album.id);
                     }
-                };
+                    //*/
 
-                //Go back in history
-                scope.goBack = function () {
-                    window.history.back();
-                };
-
-                //To add/delete favorite
-                scope.switchFavorite = function () {
-                    scope.favorited = !scope.favorited;
-                    gtlStorage.setNamespace('favorites');
-
-                    if (scope.favorited) {
-                        gtlStorage.set(strVarAlbum, true);
-                    } else {
-                        gtlStorage.remove(strVarAlbum);
-                    }
+                    //Another way to do it, but shows all info in the same page
+                    //scope.detailed = !scope.detailed;
                 };
 
                 /* Old code, I avoided to use a watcher to improve it and delete

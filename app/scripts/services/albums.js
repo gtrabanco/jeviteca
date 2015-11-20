@@ -8,27 +8,14 @@
  * Service in the jevitecaApp.
  */
 
-var albumsService = ['$http', 'Options', '$q', 'gtlFind', function ($http, Options, $q, gtlFind) {
+var albumsService = ['$http', 'Options', function ($http, Options) {
+//var albumsService = ['$http', 'Options', '$q', 'gtlFind', function ($http, Options, $q, gtlFind) {
   // AngularJS will instantiate a singleton by calling "new" on this function
 
 
     //Get all the albums
     this.getAllAlbums = function () {
       return $http.get(Options.urlAlbums, { cache: true});
-    };
-
-    //Find album by object with key/value
-    this.find = function (obj) {
-
-        var deferred = $q.defer();
-
-        this.getAllAlbums().then(
-            function (albums) {
-                deferred.resolve(gtlFind(obj, albums.data));
-            }
-        );
-
-        return deferred.promise;
     };
 
     /* Old code

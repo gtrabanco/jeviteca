@@ -17,8 +17,12 @@ angular
       .when('/albums/:id?', {
         templateUrl: 'views/albums.html',
         controller: 'AlbumsCtrl',
-        controllerAs: 'Albums'
-      }).otherwise({
+        controllerAs: 'Albums'})
+      .when('/bands/:id?', {
+        templateUrl: 'views/bands.html',
+        controller: 'BandsCtrl',
+        controllerAs: 'bands'})
+        .otherwise({
         redirectTo: '/albums'
       });
   });

@@ -10,7 +10,7 @@
  */
 
 angular.module('jevitecaApp')
-    .directive('hmrating',function(){
+    .directive('hmrating',['$filter', function($filter){
         return {
             restrict: 'EA',
             scope: {
@@ -18,6 +18,8 @@ angular.module('jevitecaApp')
                 hmupto:"@",
                 hmid:"@",
                 hmcolor:'@',
+                namespace: '@', //Namespace in the localStorage with gtlStorage
+                var: '@', //var in namespace at the localStorage with gtlStorage
                 rate:'=',
                 setrating : '&',
                 mouseover : '&',
@@ -26,8 +28,10 @@ angular.module('jevitecaApp')
             templateUrl: 'views/directives/rating.html',
             link : ['scope','element','attr', 'gtlStorage', function(scope, element, attr, gtlStorage){
 
-                gtlStorage.setNamespace('rates');
-                scope.setrating(gtlStorage.get($scope.hmid) || 0);
+                scope.namespace = $filter('normalize')(scope.namespace || 'rates');
+                scope.var = $filter('normalize')((scope.var + scope.hmid) || ('rId' + scope.hmid));
+                gtlStorage.setNamespace(scope.namespace);
+                scope.setrating(gtlStorage.get(scope.var) || 0);
             }],
             controller: ['$scope', 'gtlStorage', function($scope, gtlStorage){
 
@@ -35,12 +39,12 @@ angular.module('jevitecaApp')
                     //window.console.log('Setting the rate for ', $scope.hmid, ' to ', r);
                     ratingEffect(r);
                     $scope.rate = r;
-                    gtlStorage.setNamespace('rates');
+                    gtlStorage.setNamespace($scope.namespace);
 
                     if (r > 0) {
-                        gtlStorage.set($scope.hmid, r);
+                        gtlStorage.set($scope.var, r);
                     } else {
-                        gtlStorage.remove($scope.hmid);
+                        gtlStorage.remove($scope.var);
                     }
                 };
 
@@ -67,10 +71,10 @@ angular.module('jevitecaApp')
                 }
 
 
-                gtlStorage.setNamespace('rates');
-                $scope.rate = gtlStorage.get($scope.hmid) || 0;
+                gtlStorage.setNamespace($scope.namespace);
+                $scope.rate = gtlStorage.get($scope.var) || 0;
                 ratingEffect($scope.rate);
 
             }]
         };
-    });
+    }]);

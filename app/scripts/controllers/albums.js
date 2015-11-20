@@ -8,38 +8,30 @@
  * Controller of the jevitecaApp
  */
 
-var albumsCtrl = ['$scope', '$route', '$routeParams', 'AlbumsService', function ($scope, $route, $routeParams, AlbumsService) {
-
-    function isNumeric(n) {
-        return !isNaN(parseInt(n)) && isFinite(n);
-    }
+var albumsCtrl = ['$scope', '$route', '$routeParams', 'gtlFind', 'AlbumsService', '$filter', function ($scope, $route, $routeParams, gtlFind, AlbumsService, $filter ) {
 
     //*//
     //Define if a view is a detailed of album or not
     $scope.detailed = false;
 
-    //Check if the user wants to see a detailed view of specific album
-    if (typeof($routeParams.id) !== 'undefined' && isNumeric($routeParams.id)) {
+    AlbumsService.getAllAlbums().then(
+        function (albums) {
+            $scope.albums = albums.data;
 
-        var index = parseInt($routeParams.id);
-        $scope.detailed = true;
+            //Check if the user wants to see a detailed view of specific album
+            if (typeof($routeParams.id) !== 'undefined' && $filter('isNumeric')($routeParams.id)) {
 
-        AlbumsService.find({id: index}). then(
-            function (results) {
-                if (results.length > 0) {
-                    $scope.albums = results[0];
-                }
+                var index = parseInt($routeParams.id);
+                $scope.detailed = true;
+
+                $scope.albums = gtlFind({id: index}, $scope.albums)[0];
+                //$scope.albums = $filter('filter')($scope.albums, {id:index})[0]; //Usando esta vía devuelve
+                                                                    // errores AngularJS
+
+                //window.console.log($scope.albums);
             }
-        )
-
-    } else { //If the user wants to see all
-        AlbumsService.getAllAlbums().then(
-            function (albums) {
-                $scope.albums = albums.data;
-            }
-        );
-        //window.console.log($scope.albums);
-    }
+        }
+    );
 
     /* Old code
     AlbumsService.getAllAlbums().then(

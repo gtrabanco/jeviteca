@@ -12,7 +12,7 @@ var gtlStorageService = function () {
      */
     function save(namespace) {
         if (typeof(namespace) !== 'undefined' && namespace.length > 0) {
-            localStorage.setItem(namespace, JSON.stringify(data[namespace]));
+            localStorage.setItem(namespace, angular.toJson(data[namespace]));
         } else {
             save(currentNamespace);
         }
@@ -42,7 +42,7 @@ var gtlStorageService = function () {
 
             //If there is data set it
             if (item) {
-                data[namespace] = JSON.parse(item);
+                data[namespace] = angular.fromJson(item);
             }
         }
 

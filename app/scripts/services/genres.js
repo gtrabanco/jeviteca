@@ -16,4 +16,4 @@ var genresService = ['Options', function (Options) {
 }];
 
 angular.module('jevitecaApp')
-  .service('Genres', genresService);
+  .service('GenresService', genresService);
