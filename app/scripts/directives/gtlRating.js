@@ -31,7 +31,7 @@ angular.module('jevitecaApp')
 
                     gtlStorage.setNamespace(scope.namespace);
 
-                    if (r > 0) {
+                    if (rate > 0) {
                         gtlStorage.set(scope.var, rate);
                     } else {
                         gtlStorage.remove(scope.var);

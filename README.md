@@ -1,6 +1,7 @@
 # jeviteca
 
-This project is an exercise of the [http://keepcoding.io](Keep Coding Master Bootcamp II).
+This project is an exercise of the [Keep Coding Master Bootcamp II](http://keepcoding.io).
+
 Is a media library of Heavy discs make it with AngularJS.
 
 ## Introduction
