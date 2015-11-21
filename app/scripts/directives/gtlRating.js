@@ -7,7 +7,7 @@
  * # gtlRating
  */
 angular.module('jevitecaApp')
-    .directive('gtlRating', function () {
+    .directive('gtlRating', ['gtlStorage', '$filter', function (gtlStorage, $filter) {
         return {
             templateUrl: 'views/directives/gtlRating.html',
             restrict: 'AE',
@@ -16,39 +16,40 @@ angular.module('jevitecaApp')
                 var: '@',
                 stars: '='
             },
-            link: ['scope','element','attr', 'gtlStorage', function(scope, element, attr, gtlStorage){
+            link: function(scope, element, attr){
 
-                //Initial values
-                scope.namespace = $filter('normalize')(scope.namespace || 'rates');
-                scope.var = $filter('normalize')(scope.var) || 'var';
-                gtlStorage.setNamespace(scope.namespace);
-                scope.setRate(gtlStorage.get(scope.var) || 0);
-                scope.srate = 0;
+                //Normalize the namespace and the var
+                var normalize = $filter('normalize');
+                var namespace = normalize(scope.namespace);
+                var storageVar = normalize(scope.var);
 
 
+                //Functions
                 scope.setRate = function (rate) {
                     scope.rate = rate;
+                    scope.srate = rate;
 
-                    gtlStorage.setNamespace(scope.namespace);
+                    gtlStorage.setNamespace(namespace);
 
                     if (rate > 0) {
-                        gtlStorage.set(scope.var, rate);
+                        gtlStorage.set(storageVar, rate);
                     } else {
-                        gtlStorage.remove(scope.var);
+                        gtlStorage.remove(storageVar);
                     }
-                };
-
-                scope.getNumbers = function (number) {
-                    return new Array(number);
                 };
 
                 scope.overStar = function (rate) {
                     scope.srate = rate;
                 };
 
-                scope.leaveStars = function (rate) {
-                    scope.srate = rate;
+                scope.leaveStars = function () {
+                    scope.srate = scope.rate;
                 };
-            }]
+
+                //Initial values
+                gtlStorage.setNamespace(namespace);
+                scope.setRate(gtlStorage.get(storageVar) || 0);
+                scope.srate = 0;
+            }
         };
-    });
+    }]);
