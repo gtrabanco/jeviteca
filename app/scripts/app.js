@@ -1,5 +1,6 @@
 'use strict';
 
+
 /**
  * @ngdoc overview
  * @name jevitecaApp
@@ -33,7 +34,7 @@ angular
                         return BandsService.getAllBands();
                     }]
                 }
-            })
+            }) //*
             .when('/genres/:id?', {
                 templateUrl: 'views/genres.html',
                 controller: 'GenresCtrl',
@@ -43,8 +44,8 @@ angular
                         return GenresService.getAllGenres();
                     }]
                 }
-            })
+            }) //*/
             .otherwise({
-                redirectTo: '/genres'
+                redirectTo: '/albums'
             });
     });

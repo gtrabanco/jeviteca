@@ -19,10 +19,10 @@ angular.module('jevitecaApp')
                 type: '@' //Boolean number to watch all infor about the band or not
             },
             link: function (scope) {
-                //window.console.log('Band', scope.band);
+                window.console.log('Band in directive', scope.band);
 
                 scope.goToBand = function () {
-                    $location.path('/bands/' + scope.band.id);
+                    $location.path('/bands/' + (scope.band.id || ''));
                 };
 
                 if (typeof(scope.type) === 'undefined' || ['short', 'medium', 'large'].indexOf(scope.type) === -1) {

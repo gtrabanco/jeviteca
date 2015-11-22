@@ -1,3 +1,4 @@
 <article ng-repeat="genre in genres">
-    <gtl-genre moid="genre" type="genretype"></gtl-genre>
+    <gtl-back ng-if="genres.length === 1"></gtl-back>
+    {{genre}}
 </article>

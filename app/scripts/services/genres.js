@@ -12,7 +12,7 @@ var genresService = ['Options', '$http', function (Options, $http) {
     //Get all the Genres
     this.getAllGenres = function () {
         return $http.get(Options.urlGenres, { cache: true});
-    }
+    };
 }];
 
 angular.module('jevitecaApp')

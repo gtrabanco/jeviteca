@@ -1,8 +1,13 @@
-<!-- <gtl-genre genre="<genre Object| id>" type="text | medium | large"></gtl-genre> -->
-<div class="genrecontainer" ng-switch="type">
-    <p ng-switch-when="text" ng-click="goToGenre()">{{genre.name}} <gtl-fav namespace="favGenre" var="genre{{::genre.id}}"></gtl-fav></p>
-    <div ng-switch-default="">
-        <h4 ng-click="goToGenre()">{{genre.name}}</h4>
+<!-- <gtl-genre genre="<genre Object| id>" type="text | medium | large" largeId="<id>"></gtl-genre> -->
+
+<div class="genrecontainer" ng-if="!genre">
+    <h4>No genre avaible</h4>
+</div>
+
+<div class="genrecontainer" ng-if="genre">
+    <p ng-if="type === 'text'"><span ng-click="goToGenre()" class="clickable">{{genre.name}}</span> <gtl-fav namespace="favGenre" var="genre{{::genre.id}}"></gtl-fav></p>
+    <div ng-if="type !== 'text'">
+        <h4 ng-click="goToGenre()" class="clickable">{{genre.name}}</h4>
         <div class="covers" ng-if="type === 'large'">
             <div gtl-album disc="album" type="albumstype" ng-repeat="album in genre.albums"></div>
         </div>

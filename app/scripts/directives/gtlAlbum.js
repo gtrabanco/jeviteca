@@ -33,7 +33,7 @@ angular.module('jevitecaApp')
                 scope.goToAlbum = function () {
                     //*
                     if (scope.type !== 'large') {
-                        $location.path('/albums/' + scope.album.id);
+                        $location.path('/albums/' + (scope.album.id || ''));
                     }
                 };
             }

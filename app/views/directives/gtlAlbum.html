@@ -6,7 +6,7 @@
 <div ng-if="album" ng-class="type">
     <article>
         <header ng-if="type !== 'cover'">
-            <h4><span class="album-title">{{ ::album.title }}</span> <span class="album-title">({{ ::album.year }})</span></h4>
+            <h4 ng-click="goToAlbum()" ng-class="type !== 'large'?'clickable':''"><span class="album-title">{{ ::album.title }}</span> <span class="album-title">({{ ::album.year }})</span></h4>
             <gtl-band band="album.band"></gtl-band>
         </header>
         <div class="album-artwork">
@@ -17,7 +17,10 @@
             </div>
         </div>
         <div class="details" ng-if="type === 'large'">
-            <p>Genre: {{ album.genre.name }} <gtl-fav namespace="favGenres" var="gen{{::album.genre.id}}"></gtl-fav></p>
+            <!-- -- >
+            <div gtl-genre data="album.genre" type="text" largeId="-1"></div>
+            <!-- -->
+            <p>{{album.genre.name}}</p>
             <p>Tracklist</p>
             <ol class="tracklist">
                 <li ng-repeat="track in album.tracklist">{{ track }} <gtl-fav namespace="favTrack" var="tr{{::album.id}}{{::track}}"></li>

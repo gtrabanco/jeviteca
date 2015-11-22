@@ -12,50 +12,31 @@ angular.module('jevitecaApp')
             templateUrl: 'views/directives/gtlGenre.html',
             restrict: 'AE',
             scope: {
-                genre: '=moid', //The id or the model of genre object
-                type: '@' //Type of the info you want about
+                genre: '=data', //The model of genre object
+                type: '=', //Type of the info you want about
+                largeId: '='
             },
             link: ['scope', 'element', 'attrs', '$location', '$filter', 'GenresService', function postLink(scope, element,
                                                                                                            attrs, $location,
                                                                                                            $filter, GenresService) {
 
+
+                console.log('The value of gente in gtlGenre.js is ', scope.genre);
+                debugger;
                 //Initial values
+                scope.type = ['text', 'medium', 'large'].indexOf(scope.type) !== -1? scope.type : 'text';
+                scope.largeId = $filter('isNumeric')(scope.largeId)?parseInt(scope.largeId):-1;
                 scope.albumstype = 'cover';
-                var isNumeric = $filter('isNumeric');
 
-                //If we do not have all the data we need like the albums, get it!
-                // This is due to the versability of the directive
-                if (scope.genre && isNumeric(scope.genre) ||
-                    scope.type !== 'large' && typeof(scope.genre.id) === 'undefined' ||
-                    scope.type !== 'text' && typeof(scope.albums) === 'undefined') {
-
-                    var searchObj = {};
-
-                    if (isNumeric(scope.genre)) {
-                        searchObj = {id: parseInt(scope.genre)};
-                    } else {
-                        searchObj = {name: scope.genre.name};
-                    }
-
-                    GenresService.getAllGenres().then(
-                        function (results) {
-                            var filter = $filter('filter');
-                            scope.genre = filter(results.data, searchObj)[0] || {};
-                        }
-                    );
-                }
-
-                //Functions
+                //Function to go genre
                 scope.goToGenre = function () {
-                    if (scope.type === 'text') {
-                        $location.path('genres/' + scope.genre.id);
-                    } else if(scope.type == 'medium') {
-                        scope.type = 'large';
-                    } else {
-                        scope.type = 'medium';
-                    }
-                };
 
+                    if (scope.type !== 'text') {
+                        scope.type = scope.type === 'medium'?'large':'medium';
+                    } else {
+                        $location.path('/genres/' + (scope.genre.id || ''));
+                    }
+                }
             }]
         };
     });
