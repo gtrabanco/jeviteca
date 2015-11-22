@@ -1,8 +1,11 @@
 <div ng-repeat="band in bands" ng-if="!detailed" class="sort-band">
-    <gtl-band band="band" type="medium"></gtl-band>
+    <gtl-band band="band" type="{{ 'medium' }}"></gtl-band>
 </div>
 
 <div ng-if="detailed" class="detailed-band">
     <gtl-back></gtl-back>
-    <gtl-band band="bands.id" type="large"></gtl-band>
+    <gtl-band band="bands.id" type="{{ 'large' }}"></gtl-band>
+    <div class="covers">
+        <div gtl-album disc="album" type="albumstype" ng-repeat="album in bands.albums"></div>
+    </div>
 </div>

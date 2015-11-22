@@ -15,6 +15,7 @@ angular.module('jevitecaApp')
         BandsService.getAllBands().then(
             function (results) {
                 $scope.bands = results.data;
+                $scope.albumstype = 'cover';
 
                 //Check if the user wants to see a detailed view of specific album
                 if (typeof($routeParams.id) !== 'undefined' && $filter('isNumeric')($routeParams.id)) {
