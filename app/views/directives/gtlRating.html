@@ -1,3 +1,3 @@
 <div class="rate">
-    <i ng-click="setRate(0)" class="clickable" style="color: transparent;">0</i><i ng-repeat="star in ([].constructor(stars)) track by $index" ng-class="(($index+1) <= rate || ($index+1) <= srate) ? 'fa fa-star':'fa fa-star-o' " ng-click="setRate($index+1)" ng-mouseover="overStar($index+1)" ng-mouseleave="leaveStars()"></i>
+    <i ng-click="setRate(0)" ng-mouseover="overStar(0)" ng-mouseleave="leaveStars()" class="clickable" style="color: transparent;">0</i><i ng-repeat="star in ([].constructor(stars)) track by $index" ng-class="(($index+1) <= srate) ? 'fa fa-star':'fa fa-star-o' " ng-click="setRate($index+1)" ng-mouseover="overStar($index+1)" ng-mouseleave="leaveStars()"></i>
 </div>

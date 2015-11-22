@@ -85,14 +85,14 @@ body {
 
 /* Custom CSS */
 
+.container {
+    width: 100%;
+}
+
 .fav {
     font-size: 15px;
     color: red;
     cursor: pointer;
-    display: inline;
-}
-
-.fav * {
     display: inline;
 }
 
@@ -102,33 +102,101 @@ body {
     color: gold;
 }
 
-.album-artwork {
-    display: block;
-}
-.album-artwork .rating {
-    position: relative;
-    bottom: 0;
-    left: 0;
-    height: 30px;
-    width: 120px;
+.covers {
+    width: 100%;
+    display: inline;
 }
 
-.album-artwork .fav {
-    position: relative;
-    bottom: 0;
-    right: 0;
-    height: 30px;
-    width: 30px;
+.cover {
+    display: inline-block;
+    float: left;
 }
+
+.cover .album-artwork {
+    display: inline-block;
+    position: relative;
+    width: 180px;
+    height: 180px;
+    margin: 10px 10px;
+}
+
+.short {
+    width: 280px;
+    height: 300px;
+    margin: 20px 20px;
+    display: inline-block;
+    float: left;
+}
+
+.short .album-artwork {
+    width: 200px;
+    height: 200px;
+    display: inline-block;
+    position: relative;
+    margin: 0 0;
+}
+
+.large {
+    width: 100%;
+    margin: 30px 30px;
+}
+
+.large .album-artwork {
+    width: 300px;
+    height: 300px;
+    display: inline-block;
+    position: relative;
+    margin: 0 0;
+}
+
+.album-artwork img {
+    width: 100%;
+    height: 100%;
+    z-index: 100;
+}
+
+.album-artwork div {
+    position: absolute;
+    bottom: 0;
+    z-index: 200;
+    height: 30px;
+    width: 100%;
+    display: inline-block;
+    padding: 0 10px;
+}
+
+.album-artwork div .fav {
+    float: right;
+    right: 0;
+    z-index: 300;
+    width: 30%;
+    text-align: right;
+}
+
+.album-artwork div .rate {
+    float: left;
+    left: 0;
+    z-index: 300;
+    width: 55%;
+    text-align: left;
+}
+
+
 
 .clickable:hover {
     cursor: pointer;
     color: royalblue;
 }
 
-/* No detailed (box) */
-
-/* Detailed (detailed) */
+/*
+        <div class="album-artwork">
+            <img src="{{ ::album.image | imageSource }}" alt="{{::album.title}}" ng-click="goToAlbum()" />
+            <div ng-if="type === 'cover'">
+                <gtl-rating namespace="fav" var="{{::album.name | normalize}}" stars="5"></gtl-rating>
+                <gtl-fav namespace="favAlbums" var="album{{::album.id}}"></gtl-fav>
+            </div>
+        </div>
+ */
 
 
 

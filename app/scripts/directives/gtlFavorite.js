@@ -9,7 +9,7 @@
 angular.module('jevitecaApp')
   .directive('gtlFav', ['gtlStorage', '$filter', function (gtlStorage, $filter) {
     return {
-      template: '<i ng-class="{\'fav fa fa-heart\':favorited, \'fav fa fa-heart-o\':!favorited}" ng-click="switchFavorite()"></i>',
+      template: '<div class="fav"><i ng-class="{\'fa fa-heart\':favorited, \'fa fa-heart-o\':!favorited}" ng-click="switchFavorite()"></i></div>',
       restrict: 'AE',
         scope: {
             namespace: '@', //Namespace in the localStorage where favorites are stored (default: favorites)
@@ -17,30 +17,22 @@ angular.module('jevitecaApp')
         },
       link: function postLink(scope, element, attrs) {
 
-          //window.console.log(scope.namespace, 'var = ', scope.var, ' the value ', scope.favorited);
 
-          scope.namespace = $filter('normalize')(scope.namespace || 'favorites');
-          scope.var = $filter('normalize')(scope.var || 'var');
+          //Normalize the values
+          var normalize  = $filter('normalize');
+          var namespace  = normalize(scope.namespace);
+          var storageVar = normalize(scope.var);
+
 
           // Get if it is favorited
-          gtlStorage.setNamespace(scope.namespace);
-          scope.favorited = gtlStorage.get(scope.var);
+          gtlStorage.setNamespace(namespace);
+          scope.favorited = gtlStorage.get(storageVar);
 
           //To add/delete favorite
           scope.switchFavorite = function () {
               scope.favorited = !scope.favorited;
-              gtlStorage.setNamespace('favorites');
-              gtlStorage.set(scope.var, scope.favorited);
-
-              //window.console.log(scope.namespace, 'var = ', scope.var, ' the value ', scope.favorited);
-
-              /*
-              if (scope.favorited) {
-                  gtlStorage.set(scope.var, scope.favorited);
-              } else {
-                  gtlStorage.remove(scope.var);
-              }
-              //*/
+              gtlStorage.setNamespace(namespace);
+              gtlStorage.set(storageVar, scope.favorited);
           };
 
           //We could save the change in the favorite with a $watcher but I think is not the proper way in this case

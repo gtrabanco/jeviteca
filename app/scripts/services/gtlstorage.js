@@ -79,6 +79,9 @@ var gtlStorageService = function () {
          * @param value
          */
         set: function(variable, value) {
+
+            window.console.log('Setting data[', currentNamespace, '][', variable, '] = ', value);
+
             data[currentNamespace][variable] = value;
             save();
 
@@ -90,6 +93,8 @@ var gtlStorageService = function () {
          * @param variable
          */
         get: function (variable) {
+            window.console.log('Getting data[', currentNamespace, '][', variable, '] = ', data[currentNamespace][variable]);
+
             return data[currentNamespace][variable];
         },
 

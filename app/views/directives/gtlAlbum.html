@@ -1,27 +1,27 @@
-<h1 ng-if="detailed">Detailed true</h1>
-
-
-<article ng-if="album" ng-class="{'detailed': detailed, 'box': !detailed}">
-    <header>
-        <h4><span class="album-title">{{ ::album.title }}</span> <span class="album-title">({{ ::album.year }})</span> <gtl-fav namespace="favAlbums" var="album{{::album.id}}"></gtl-fav></h4>
-        <gtl-band band="album.band"></gtl-band>
-    </header>
-    <div class="album-artwork" ng-if="album.image">
-        <img src="{{ ::album.image | imageSource }}" alt="{{ ::album.title }}" ng-click="goToAlbum()" />
-        <div class="rating">
-            <div gtl-rating namespace="fav" var="{{::album.name | normalize}}" stars="5"></div>
-        </div>
-        <gtl-fav namespace="favAlbums" var="album{{::album.id}}"></gtl-fav>
-    </div>
-    <div class="details" ng-if="detailed">
-        <p>Genre: {{ album.genre.name }} <gtl-fav namespace="favGenres" var="gen{{::album.genre.id}}"></gtl-fav></p>
-        <p>Tracklist</p>
-        <ol class="tracklist">
-            <li ng-repeat="track in album.tracklist">{{ track }} <gtl-fav namespace="favTrack" var="{{::album.id}}{{::track | normalize}}"></li>
-        </ol>
-    </div>
-</article>
-
 <article ng-if="!album">
-    <p>Not found</p>
+    <h2>404</h2>
+    <p>No any album found.</p>
 </article>
+
+<div ng-if="album" ng-class="type">
+    <article>
+        <header ng-if="type !== 'cover'">
+            <h4><span class="album-title">{{ ::album.title }}</span> <span class="album-title">({{ ::album.year }})</span></h4>
+            <gtl-band band="album.band"></gtl-band>
+        </header>
+        <div class="album-artwork">
+            <img src="{{ ::album.image | imageSource }}" alt="{{::album.title}}" ng-click="goToAlbum()" />
+            <div>
+                <gtl-rating namespace="rateAlbum" var="album{{::album.id}}" stars="5"></gtl-rating>
+                <gtl-fav namespace="favAlbums" var="album{{::album.id}}"></gtl-fav>
+            </div>
+        </div>
+        <div class="details" ng-if="type === 'large'">
+            <p>Genre: {{ album.genre.name }} <gtl-fav namespace="favGenres" var="gen{{::album.genre.id}}"></gtl-fav></p>
+            <p>Tracklist</p>
+            <ol class="tracklist">
+                <li ng-repeat="track in album.tracklist">{{ track }} <gtl-fav namespace="favTrack" var="tr{{::album.id}}{{::track}}"></li>
+            </ol>
+        </div>
+    </article>
+</div>

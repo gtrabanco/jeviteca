@@ -31,8 +31,8 @@ angular.module('jevitecaApp')
 
                     gtlStorage.setNamespace(namespace);
 
-                    if (rate > 0) {
-                        gtlStorage.set(storageVar, rate);
+                    if (scope.rate > 0) {
+                        gtlStorage.set(storageVar, scope.rate);
                     } else {
                         gtlStorage.remove(storageVar);
                     }
@@ -49,7 +49,6 @@ angular.module('jevitecaApp')
                 //Initial values
                 gtlStorage.setNamespace(namespace);
                 scope.setRate(gtlStorage.get(storageVar) || 0);
-                scope.srate = 0;
             }
         };
     }]);

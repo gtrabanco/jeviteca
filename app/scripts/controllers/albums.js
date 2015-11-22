@@ -11,8 +11,7 @@
 var albumsCtrl = ['$scope', '$route', '$routeParams', 'gtlFind', 'AlbumsService', '$filter', function ($scope, $route, $routeParams, gtlFind, AlbumsService, $filter ) {
 
     //*//
-    //Define if a view is a detailed of album or not
-    $scope.detailed = false;
+    $scope.type = 'short';
 
     AlbumsService.getAllAlbums().then(
         function (albums) {
@@ -22,9 +21,9 @@ var albumsCtrl = ['$scope', '$route', '$routeParams', 'gtlFind', 'AlbumsService'
             if (typeof($routeParams.id) !== 'undefined' && $filter('isNumeric')($routeParams.id)) {
 
                 var index = parseInt($routeParams.id);
-                $scope.detailed = true;
+                $scope.type = 'large';
 
-                $scope.albums = gtlFind({id: index}, $scope.albums)[0];
+                $scope.albums = gtlFind({id: index}, $scope.albums);
                 //$scope.albums = $filter('filter')($scope.albums, {id:index})[0]; //Usando esta vía devuelve
                                                                     // errores AngularJS
 
