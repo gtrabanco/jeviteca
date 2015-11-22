@@ -36,7 +36,7 @@
 
 <!-- Old code -->
 <p ng-if="band && type === 'short'" class="band">
-        <span ng-click="goToBand()">{{::band.name}}</span> <gtl-fav namespace="favBand" var="band{{::band.id}}"></gtl-fav>
+        <span ng-click="goToBand()" class="clickable">{{::band.name}}</span> <gtl-fav namespace="favBand" var="band{{::band.id}}"></gtl-fav>
 </p>
 
 <div ng-if="band && type === 'medium'" class="band">
@@ -54,7 +54,7 @@
 
 <div ng-if="band && type === 'large'" class="band">
     <header>
-        <h4 ng-click="goToBand()">{{::band.name}}</h4> <gtl-fav namespace="favBand" var="band{{::band.id}}">
+        <h4 ng-click="goToBand()" class="clickable">{{::band.name}}</h4> <gtl-fav namespace="favBand" var="band{{::band.id}}">
         <p>From: {{::band.origin}}</p>
     </header>
     <p>Members</p>
