@@ -1,0 +1,27 @@
+<!-- <gtl-genre genre="<genre Object| id>" type="text | medium | large" largeId="<id>"></gtl-genre> -->
+
+<div class="genrecontainer" ng-if="!genre">
+    <h4>No genre avaible</h4>
+</div>
+
+<div class="genrecontainer" ng-if="genre">
+    <p ng-if="type === 'text'"><span ng-click="goToGenre()" class="clickable">{{genre.name}}</span> <gtl-fav namespace="favGenres" var="g{{::genre.name}}"></gtl-fav></p>
+    <div ng-if="type !== 'text'" class="genre">
+        <h4><span ng-click="goToGenre()" class="clickable">{{genre.name}}</span> <gtl-fav namespace="favGenres" var="g{{::genre.name}}"></gtl-fav></h4>
+    </div>
+    <div class="row covers" ng-if="type === 'large'">
+        <div gtl-album disc="album" type="albumsType" ng-repeat="album in genre.albums"></div>
+    </div>
+</div>
+
+<!-- -- >
+<div class="genrecontainer">
+    <p ng-if="type === 'text'" ng-click="goToGenre()">{{genre.name}} <gtl-fav namespace="favGenre" var="genre{{::genre.id}}"></gtl-fav></p>
+    <div ng-if="type !== 'text'">
+        <h4 ng-click="goToGenre()">{{genre.name}}</h4>
+        <div class="covers" ng-if="type === 'large'">
+            <div gtl-album disc="album" type="albumstype" ng-repeat="album in genre.albums"></div>
+        </div>
+    </div>
+</div>
+<!-- -->

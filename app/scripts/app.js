@@ -31,7 +31,16 @@ angular
                     Bands: ['BandsService', function (BandsService) {
                         return BandsService.getAllBands();
                     }]
-                }})
+                }})//*
+            .when('/genres/:id?', {
+                templateUrl: 'views/genres.html',
+                controller: 'GenresCtrl',
+                controllerAs: 'genres',
+                resolve: {
+                    Genres: ['GenresService', function (GenresService) {
+                        return GenresService.getAllGenres();
+                    }]
+                }})//*/
             .otherwise({
                 redirectTo: '/albums'
             });
