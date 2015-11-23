@@ -39,15 +39,6 @@ angular.module('jevitecaApp')
                     }
                     //console.log(scope.type);
                 };
-
-                //If we only have the name because we need the id for the given genre name
-                if (typeof(scope.genre.id) === 'undefined' && scope.genre.name) {
-                    GenresService.getAllGenres().then(
-                        function (results) {
-                            scope.genre = $filter('filter')(results.data, {name: scope.genre.name});
-                        }
-                    );
-                }
             }
         };
     }]);
