@@ -8,7 +8,7 @@
  * Service in the jevitecaApp.
  */
 
-var genresService = ['Options', function (Options) {
+var genresService = ['Options', '$http', function (Options) {
     //Get all the Genres
     this.getAllAlbums = function () {
       return $http.get(Options.urlAlbums, { cache: true});

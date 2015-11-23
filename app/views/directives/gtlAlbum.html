@@ -10,7 +10,7 @@
             <gtl-band band="album.band"></gtl-band>
         </header>
         <div class="album-artwork">
-            <img src="{{ ::album.image | imageSource }}" alt="{{::album.title}}" ng-click="goToAlbum()" />
+            <img ng-src="{{ ::album.image | imageSource }}" alt="{{::album.title}}" ng-click="goToAlbum()" />
             <div>
                 <gtl-rating namespace="rateAlbum" var="album{{::album.id}}" stars="5"></gtl-rating>
                 <gtl-fav namespace="favAlbums" var="album{{::album.id}}"></gtl-fav>

@@ -8,5 +8,7 @@ Is a media library of Heavy discs make it with AngularJS.
 
 ## Known Errors
 
-* Stars rating not found in spite of the rate is set. You can pass your cursor over the rating and after leve it without
-click it the rate will be set with stars. Anyway the rate is in the right side of the stars.
+* Could not add Genres, do not know why but it give me a lot of errors.
+* Could not use the resolve in Bands, it fails all the time.
+* The Genres view could be improved but because the fails I have no time.
+* The ng-switch give me some problems so I could not improved some views.
