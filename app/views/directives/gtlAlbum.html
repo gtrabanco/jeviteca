@@ -17,7 +17,11 @@
             </div>
         </div>
         <div class="details" ng-if="type === 'large'">
+            <!-- -->
             <p>Genre: {{ album.genre.name }} <gtl-fav namespace="favGenres" var="g{{::album.genre.name}}"></gtl-fav></p>
+            <!-- -- >
+            <gtl-genre type="text" genre="album.genre"></gtl-genre>
+            <!-- -->
             <p>Tracklist</p>
             <ol class="tracklist">
                 <li ng-repeat="track in album.tracklist">{{ track }} <gtl-rating namespace="rateTrack" var="{{::album.id}}{{track}}" stars="5"></gtl-rating> <gtl-fav namespace="favTrack" var="tr{{::album.id}}{{::track}}"></li>
