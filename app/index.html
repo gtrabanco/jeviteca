@@ -23,11 +23,7 @@
 
     <!-- Add your site or application content here -->
 
-    <div class="header" ng-controller="NavbarCtrl">
-      <header>
-        <h1>Jeviteca</h1>
-      </header>
-    </div>
+    <gtl-nav></gtl-nav>
 
     <div class="container">
       <main ng-view></main>
@@ -95,12 +91,11 @@
 
         <!-- Controllers -->
         <script src="scripts/controllers/albums.js"></script>
-        <script src="scripts/controllers/navbar.js"></script>
         <script src="scripts/controllers/bands.js"></script>
 
 
 
-        <script src="scripts/controllers/bandas.js"></script>
+        <script src="scripts/directives/gtlNav.js"></script>
         <!-- endbuild -->
 </body>
 </html>

@@ -16,7 +16,7 @@ angular.module('jevitecaApp')
             scope: {
                 //@ reads the attribute value, = provides two-way binding, & works with functions
                 band: '=',
-                type: '@' //Boolean number to watch all infor about the band or not
+                type: '=' //Boolean number to watch all infor about the band or not
             },
             link: function (scope) {
 

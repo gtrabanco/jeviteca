@@ -8,20 +8,18 @@
  * Controller of the jevitecaApp
  */
 angular.module('jevitecaApp')
-  .controller('BandsCtrl', ['$scope', '$filter', '$route', '$routeParams', 'Bands', function ($scope, $filter, $route, $routeParams, Bands) {
+  .controller('BandsCtrl', ['$scope', '$filter', '$route', '$routeParams', 'BandsService', function ($scope, $filter, $route, $routeParams, BandsService) {
         //Define if a view is a detailed of album or not
         $scope.detailed = false;
         $scope.albumsType = 'cover';
         $scope.bandsType = 'medium';
-        $scope.bands = Bands.data;
+        //$scope.bands = Bands.data; //Not working do not know why
 
 
-
-        /*/
         BandsService.getAllBands().then(
             function (results) {
                 $scope.bands = results.data;
-                $scope.albumstype = 'cover';
+                $scope.albumsType = 'cover';
 
                 //Check if the user wants to see a detailed view of specific album
                 if (typeof($routeParams.id) !== 'undefined' && $filter('isNumeric')($routeParams.id)) {

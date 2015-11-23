@@ -32,17 +32,7 @@ angular
                         return BandsService.getAllBands();
                     }]
                 }})
-            .when('/bandas/:id', {
-              templateUrl: 'views/bandas.html',
-              controller: 'BandasCtrl',
-              controllerAs: 'bandas',
-                resolve: {
-                    Bands: ['BandsService', function (BandsService) {
-                        return [{name: 'Uno'}, {name: 'Dos'}];
-                    }]
-                }
-            })
             .otherwise({
-                redirectTo: '/bandas'
+                redirectTo: '/albums'
             });
     });
