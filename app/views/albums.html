@@ -1,1 +1,4 @@
-<p>This is the Albums view.</p>
+<section>
+    <gtl-back ng-if="albums.length === 1"></gtl-back>
+    <div gtl-album disc="album" type="type" ng-repeat="album in albums"></div>
+</section>

@@ -1,23 +1,23 @@
 'use strict';
 
-describe('Controller: MainCtrl', function () {
+describe('Controller: AlbumdirectiveCtrl', function () {
 
   // load the controller's module
   beforeEach(module('jevitecaApp'));
 
-  var MainCtrl,
+  var AlbumdirectiveCtrl,
     scope;
 
   // Initialize the controller and a mock scope
   beforeEach(inject(function ($controller, $rootScope) {
     scope = $rootScope.$new();
-    MainCtrl = $controller('MainCtrl', {
+    AlbumdirectiveCtrl = $controller('AlbumdirectiveCtrl', {
       $scope: scope
       // place here mocked dependencies
     });
   }));
 
   it('should attach a list of awesomeThings to the scope', function () {
-    expect(MainCtrl.awesomeThings.length).toBe(3);
+    expect(AlbumdirectiveCtrl.awesomeThings.length).toBe(3);
   });
 });

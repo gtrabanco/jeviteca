@@ -5,6 +5,7 @@
     <title></title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
     <!-- build:css(.) styles/vendor.css -->
     <!-- bower:css -->
@@ -22,14 +23,10 @@
 
     <!-- Add your site or application content here -->
 
-    <div class="header" ng-controller="NavbarCtrl">
-      <header>
-        <h1>Jeviteca</h1>
-      </header>
-    </div>
+    <gtl-nav></gtl-nav>
 
     <div class="container">
-      <section ng-view></section>
+      <main ng-view></main>
     </div>
 
     <div class="footer">
@@ -60,6 +57,7 @@
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-local-storage/dist/angular-local-storage.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -73,21 +71,31 @@
         <!-- Filters -->
         <script src="scripts/filters/join.js"></script>
         <script src="scripts/filters/imagesource.js"></script>
+        <script src="scripts/filters/concat.js"></script>
+        <script src="scripts/filters/normalize.js"></script>
+        <script src="scripts/filters/isNumeric.js"></script>
 
-        <!-- Services -->
+        <!-- Services & Factories -->
         <script src="scripts/services/bands.js"></script>
         <script src="scripts/services/albums.js"></script>
         <script src="scripts/services/genres.js"></script>
-
-        <!-- Factories -->
+        <script src="scripts/services/gtlStorage.js"></script>
 
         <!-- Directives -->
-        <script src="scripts/directives/album.js"></script>
+        <script src="scripts/directives/gtlAlbum.js"></script>
+        <script src="scripts/directives/gtlBand.js"></script>
+        <script src="scripts/directives/gtlFavorite.js"></script>
+        <script src="scripts/directives/gtlGenre.js"></script>
+        <script src="scripts/directives/gtlBack.js"></script>
+        <script src="scripts/directives/gtlRating.js"></script>
 
         <!-- Controllers -->
         <script src="scripts/controllers/albums.js"></script>
-        <script src="scripts/controllers/albumsid.js"></script>
-        <script src="scripts/controllers/navbar.js"></script>
+        <script src="scripts/controllers/bands.js"></script>
+
+
+
+        <script src="scripts/directives/gtlNav.js"></script>
         <!-- endbuild -->
 </body>
 </html>

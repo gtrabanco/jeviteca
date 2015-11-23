@@ -1,0 +1,71 @@
+<!-- -- >
+<div class="bandcontainer">
+    <p class="band" ng-if="band && type === 'short'">
+        <span ng-click="goToBand()">{{::band.name}}</span> <gtl-fav namespace="favBand" var="band{{::band.id}}"></gtl-fav>
+    </p>
+
+    <article class="band" ng-if="band && type !== short">
+        <header>
+            <h4 ng-click="goToBand()">{{::band.name}}</h4> <gtl-fav namespace="favBand" var="band{{::band.id}}">
+            <p>From: {{::band.origin}}</p>
+        </header>
+        <div>
+            <p>Members</p>
+            <ul>
+                <li ng-repeat="member in band.members">{{::member.name}} <gtl-fav namespace="favBandMem" var="{{::member.name | normalize}}">: {{::member.instruments | concat:', ':'.'}}</li>
+            </ul>
+        </div>
+        <div class="covers" ng-if="type === 'large'">
+            <div gtl-album disc="album" type="cover" ng-repeat="album in band.albums"></div>
+        </div>
+    </article>
+
+    <article ng-if="!band">
+        <header>
+            <h6>Not found</h6>
+        </header>
+    </article>
+
+</div>
+<!-- -->
+
+
+
+
+
+
+<!-- Old code -->
+<p ng-if="band && type === 'short'" class="band">
+        <span ng-click="goToBand()" class="clickable">{{::band.name}}</span> <gtl-fav namespace="favBand" var="band{{::band.id}}"></gtl-fav>
+</p>
+
+<div ng-if="band && type === 'medium'" class="band">
+    <article>
+        <header>
+            <h4><span class="clickable" ng-click="goToBand()">{{::band.name}}</span> <gtl-fav namespace="favBand" var="band{{::band.id}}"></gtl-fav></h4>
+            <p>From: {{::band.origin}}</p>
+        </header>
+        <p>Members</p>
+        <ul>
+            <li ng-repeat="member in band.members">{{::member.name}} <gtl-fav namespace="favBandMem" var="{{::member.name | normalize}}">: {{::member.instruments | concat:', ':'.'}}</li>
+        </ul>
+    </article>
+</div>
+
+<div ng-if="band && type === 'large'" class="band">
+    <header>
+        <h4 ng-click="goToBand()" class="clickable">{{::band.name}}</h4> <gtl-fav namespace="favBand" var="band{{::band.id}}">
+        <p>From: {{::band.origin}}</p>
+    </header>
+    <p>Members</p>
+    <ul>
+        <li ng-repeat="member in band.members">{{::member.name}} <gtl-fav namespace="favBandMem" var="{{::member.name | normalize}}">: {{::member.instruments | concat:', ':'.'}}</li>
+    </ul>
+</div>
+
+<div ng-if="!band" class="band">
+    <header>
+        <h6>Not found</h6>
+    </header>
+</div>
+<!-- -->

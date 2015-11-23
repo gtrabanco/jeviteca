@@ -1,0 +1,15 @@
+<!-- HEADER AND NAVBAR -->
+
+<header>
+    <nav class="navbar navbar-default">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand clickable" href="{{options.home.route}}">{{options.title}}</a>
+            </div>
+
+            <ul class="nav navbar-nav navbar-right">
+                <li ng-repeat="route in routes"><a href="#/{{route.url | join:'/':''}}" class="clickable"><i class="{{route.icon || ''}}"></i> {{route.title}}</a></li>
+            </ul>
+        </div>
+    </nav>
+</header>

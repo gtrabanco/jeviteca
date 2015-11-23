@@ -9,22 +9,30 @@
  * Main module of the application.
  */
 angular
-  .module('jevitecaApp', [
-    'ngRoute'
-  ])
-  .config(function ($routeProvider) {
-    $routeProvider
-      .when('/albums', {
-        templateUrl: 'views/albums.html',
-        controller: 'AlbumsCtrl',
-        controllerAs: 'Albums'
-      })
-      .when('/albums/:id', {
-        templateUrl: 'views/albumsid.html',
-        controller: 'AlbumsidCtrl',
-        controllerAs: 'albumsId'
-      })
-      .otherwise({
-        redirectTo: '/albums'
-      });
-  });
+    .module('jevitecaApp', [
+        'ngRoute'
+    ])
+    .config(function ($routeProvider) {
+        $routeProvider
+            .when('/albums/:id?', {
+                templateUrl: 'views/albums.html',
+                controller: 'AlbumsCtrl',
+                controllerAs: 'Albums',
+                resolve: {
+                    Albums: ['AlbumsService', function (AlbumsService) {
+                        return AlbumsService.getAllAlbums();
+                    }]
+                }})
+            .when('/bands/:id?', {
+                templateUrl: 'views/bands.html',
+                controller: 'BandsCtrl',
+                controllerAs: 'bands',
+                resolve: {
+                    Bands: ['BandsService', function (BandsService) {
+                        return BandsService.getAllBands();
+                    }]
+                }})
+            .otherwise({
+                redirectTo: '/albums'
+            });
+    });

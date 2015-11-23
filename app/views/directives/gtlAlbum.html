@@ -1,0 +1,27 @@
+<article ng-if="!album">
+    <h2>404</h2>
+    <p>No any album found.</p>
+</article>
+
+<div ng-if="album" ng-class="type">
+    <article>
+        <header ng-if="type !== 'cover'">
+            <h4 class="clickable" ng-click="goToAlbum()"><span class="album-title">{{ ::album.title }}</span> <span class="album-title">({{ ::album.year }})</span></h4>
+            <gtl-band band="album.band"></gtl-band>
+        </header>
+        <div class="album-artwork">
+            <img src="{{ ::album.image | imageSource }}" alt="{{::album.title}}" ng-click="goToAlbum()" />
+            <div>
+                <gtl-rating namespace="rateAlbum" var="album{{::album.id}}" stars="5"></gtl-rating>
+                <gtl-fav namespace="favAlbums" var="album{{::album.id}}"></gtl-fav>
+            </div>
+        </div>
+        <div class="details" ng-if="type === 'large'">
+            <p>Genre: {{ album.genre.name }} <gtl-fav namespace="favGenres" var="g{{::album.genre.name}}"></gtl-fav></p>
+            <p>Tracklist</p>
+            <ol class="tracklist">
+                <li ng-repeat="track in album.tracklist">{{ track }} <gtl-rating namespace="rateTrack" var="{{::album.id}}{{track}}" stars="5"></gtl-rating> <gtl-fav namespace="favTrack" var="tr{{::album.id}}{{::track}}"></li>
+            </ol>
+        </div>
+    </article>
+</div>

@@ -1,0 +1,11 @@
+<div ng-repeat="band in bands" ng-if="!detailed" class="sort-band">
+    <gtl-band band="band" type="bandsType"></gtl-band>
+</div>
+
+<div ng-if="detailed" class="detailed-band">
+    <gtl-back></gtl-back>
+    <gtl-band band="bands" type="bandsType"></gtl-band>
+    <div class="covers">
+        <div gtl-album disc="album" type="albumsType" ng-repeat="album in bands.albums"></div>
+    </div>
+</div>
