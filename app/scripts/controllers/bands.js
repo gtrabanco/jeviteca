@@ -8,10 +8,16 @@
  * Controller of the jevitecaApp
  */
 angular.module('jevitecaApp')
-  .controller('BandsCtrl', ['$scope', 'BandsService', '$filter', '$route', '$routeParams', function ($scope, BandsService, $filter, $route, $routeParams) {
+  .controller('BandsCtrl', ['$scope', '$filter', '$route', '$routeParams', 'Bands', function ($scope, $filter, $route, $routeParams, Bands) {
         //Define if a view is a detailed of album or not
         $scope.detailed = false;
+        $scope.albumsType = 'cover';
+        $scope.bandsType = 'medium';
+        $scope.bands = Bands.data;
 
+
+
+        /*/
         BandsService.getAllBands().then(
             function (results) {
                 $scope.bands = results.data;
@@ -29,4 +35,5 @@ angular.module('jevitecaApp')
                 }
             }
         );
+        //*/
   }]);

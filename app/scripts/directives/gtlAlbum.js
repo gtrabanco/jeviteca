@@ -9,7 +9,7 @@
 
 //Help url: https://docs.angularjs.org/guide/directive
 angular.module('jevitecaApp')
-    .directive('gtlAlbum', ['gtlStorage', '$location', 'Options', function (gtlStorage, $location, Options) {
+    .directive('gtlAlbum', ['gtlStorage', '$location', function (gtlStorage, $location) {
         return {
             templateUrl: 'views/directives/gtlAlbum.html',
             //controller: 'AlbumdirectiveCtrl',

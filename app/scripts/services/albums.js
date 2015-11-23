@@ -17,49 +17,6 @@ var albumsService = ['$http', 'Options', function ($http, Options) {
     this.getAllAlbums = function () {
       return $http.get(Options.urlAlbums, { cache: true});
     };
-
-    /* Old code
-    //Find album by object with key/value
-    this.find = function (obj) {
-        //Creating the promise
-        var deferred = $q.defer();
-
-        this.getAllAlbums().then(
-            function (albums) {
-
-                //Filter the albums
-                var returnedAlbums = albums.data.filter(function (album) {
-                    var compare = true;
-                    var keysSearch = Object.keys(obj);
-
-                    for (var i in keysSearch) {
-
-                        var k = keysSearch[i];
-                        //*
-                        if (album[k] !== obj[k]) {
-
-                            compare = false;
-                            break;
-                            //If any is false the object are not equal
-                        }
-                        //* /
-                    }
-
-                    //If all evaluations are true we want that album
-                    if (compare) {
-                        return album;
-                    }
-
-
-                });
-
-                deferred.resolve(returnedAlbums);
-            }
-        );
-
-        return deferred.promise;
-    };
-    //*/
 }];
 
 angular.module('jevitecaApp')

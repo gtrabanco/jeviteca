@@ -26,12 +26,23 @@ angular
             .when('/bands/:id?', {
                 templateUrl: 'views/bands.html',
                 controller: 'BandsCtrl',
-                controllerAs: 'bands',resolve: {
+                controllerAs: 'bands',
+                resolve: {
                     Bands: ['BandsService', function (BandsService) {
                         return BandsService.getAllBands();
                     }]
                 }})
+            .when('/bandas/:id', {
+              templateUrl: 'views/bandas.html',
+              controller: 'BandasCtrl',
+              controllerAs: 'bandas',
+                resolve: {
+                    Bands: ['BandsService', function (BandsService) {
+                        return [{name: 'Uno'}, {name: 'Dos'}];
+                    }]
+                }
+            })
             .otherwise({
-                redirectTo: '/albums'
+                redirectTo: '/bandas'
             });
     });
