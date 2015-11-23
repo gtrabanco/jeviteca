@@ -11,7 +11,7 @@
 var genresService = ['Options', '$http', function (Options, $http) {
     //Get all the Genres
     this.getAllGenres = function () {
-      return $http.get(Options.urlAlbums, { cache: true});
+      return $http.get(Options.urlGenres, { cache: true});
     }
 }];
 

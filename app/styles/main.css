@@ -102,8 +102,14 @@ body {
     color: gold;
 }
 
+.genrecontainer {
+    display: block;
+    width: 100%;
+}
+
 .covers {
-    display: inline;
+    display: block;
+    width: 100%;
 }
 
 .cover {
