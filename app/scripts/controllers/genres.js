@@ -9,9 +9,5 @@
  */
 angular.module('jevitecaApp')
   .controller('GenresCtrl', function () {
-    this.awesomeThings = [
-      'HTML5 Boilerplate',
-      'AngularJS',
-      'Karma'
-    ];
+
   });

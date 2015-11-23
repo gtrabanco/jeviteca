@@ -9,8 +9,8 @@
 angular.module('jevitecaApp')
   .directive('gtlGenre', function () {
     return {
-      template: '<div></div>',
-      restrict: 'E',
+      templateUrl: 'views/directives/gtlGenre.html',
+      restrict: 'AE',
       link: function postLink(scope, element, attrs) {
         element.text('this is the gtlGenre directive');
       }

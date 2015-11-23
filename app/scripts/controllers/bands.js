@@ -8,7 +8,7 @@
  * Controller of the jevitecaApp
  */
 angular.module('jevitecaApp')
-  .controller('BandsCtrl', ['$scope', '$filter', '$route', '$routeParams', /*, 'Bands', '$timeout', */ function ($scope, $filter, $route, $routeParams, BandsService /*, Bands, $timeout */) {
+  .controller('BandsCtrl', ['$scope', '$filter', '$route', '$routeParams', 'BandsService', /* 'Bands', '$timeout', */ function ($scope, $filter, $route, $routeParams, BandsService /*, Bands, $timeout */) {
         //Define if a view is a detailed of album or not
         $scope.detailed = false;
         $scope.albumsType = 'cover';
