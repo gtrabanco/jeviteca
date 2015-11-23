@@ -8,7 +8,7 @@
  * Controller of the jevitecaApp
  */
 
-var albumsCtrl = ['$scope', '$route', '$routeParams', 'Albums', '$filter', function ($scope, $route, $routeParams, Albums, $filter ) {
+var albumsCtrl = ['$scope', '$route', '$routeParams', 'Albums', '$filter', function ($scope, $route, $routeParams, Albums, $filter) {
 
     //*//
     $scope.type = 'short';

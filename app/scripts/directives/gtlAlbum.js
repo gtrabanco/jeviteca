@@ -36,6 +36,10 @@ angular.module('jevitecaApp')
                         $location.path('/albums/' + scope.album.id);
                     }
                 };
+
+                scope.goToGenre = function () {
+                    $location.path('/genres/').search({name: scope.album.genre.name});
+                }
             }
         };
     }]);

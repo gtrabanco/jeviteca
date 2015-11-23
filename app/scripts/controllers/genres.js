@@ -8,7 +8,7 @@
  * Controller of the jevitecaApp
  */
 angular.module('jevitecaApp')
-  .controller('GenresCtrl', ['$scope','Genres', '$route', '$routeParams', '$filter', '$timeout', function ($scope, Genres, $route, $routeParams, $filter, $timeout) {
+  .controller('GenresCtrl', ['$scope','Genres', '$route', '$routeParams', '$filter', '$timeout', '$location', function ($scope, Genres, $route, $routeParams, $filter, $timeout, $location) {
 
         //Init values
         var isNumeric = $filter('isNumeric');
@@ -24,5 +24,13 @@ angular.module('jevitecaApp')
         if (typeof($routeParams.id) !== 'undefined' && isNumeric($routeParams.id)) {
 
             $scope.selectedId = parseInt($routeParams.id);
+        } else if ($routeParams.name){
+            var result = $filter('filter')(Genres.data, {name: $routeParams.name}, function (x, y) {
+                return x === y;
+            });
+
+            if (result.length > 0) {
+                $location.path('/genres/' + result[0].id).search({});
+            }
         }
   }]);

@@ -10,4 +10,3 @@ Is a media library of Heavy discs make it with AngularJS.
 
 * Could not use the resolve in Bands, it fails all the time.
 * The ng-switch give me some problems so I could not improved some views.
-* Could not be added the link to specific genre in the album details.
