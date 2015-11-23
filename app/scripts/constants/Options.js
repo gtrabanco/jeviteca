@@ -29,6 +29,11 @@ angular.module('jevitecaApp')
                     title: 'Bands',
                     url: ['bands'],
                     icon: 'fa fa-group'
+                },
+                {
+                    title: 'Genres',
+                    url: ['genres'],
+                    icon: 'fa fa-music'
                 }
             ]
         }
